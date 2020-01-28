@@ -1,8 +1,28 @@
 .basic-layout{
   height: 100vh;
   width: 100vw;
+  overflow: hidden;
   .basic-layout-header{
-    background-color: #fff;
+    padding: 0;
+     background-color: #008a96;
+     -webkit-app-region: drag;
+   }
+  .basic-layout-footer{
+    background-color: #963904;
     -webkit-app-region: drag;
+  }
+  .basic-layout-content{
+    background-color: cornflowerblue;
+    overflow: auto;
+  }
+  .basic-layout-sider{
+    background-color: aliceblue;
+    overflow: auto;
+  }
+}
+.content{
+  overflow: auto;
+  .content-cantainer{
+    height: 2000px;
   }
 }
