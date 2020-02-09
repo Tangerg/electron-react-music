@@ -4,9 +4,7 @@ import RequestConfig from "../config/request";
 
 interface ResponseData<T> {}
 
-axios.defaults.headers = {
-  "Content-Type": RequestConfig.HEADERS
-};
+axios.defaults.headers = RequestConfig.HEADERS;
 axios.defaults.baseURL = RequestConfig.BASE_URL;
 axios.defaults.timeout = RequestConfig.TIME_OUT;
 axios.interceptors.request.use(); // TODO 请求拦截

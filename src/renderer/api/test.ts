@@ -1,8 +1,8 @@
 import request from "../utils/request";
 
-export const getApi = () => {
+export const getApi = (id?: number) => {
   return request({
-    url: "/personalized",
+    url: `/personalized${id}`,
     method: "get"
   });
 };

@@ -5,13 +5,13 @@ import "./BasicLayout.less";
 import MusicHeader from "./components/Header";
 import RenderView from "./components/RenderView";
 import SiderMenu from "./components/SiderMenu";
-import { getApi } from "../api/test";
+import obj from "../router";
 
 const { Header, Footer, Sider, Content } = Layout;
 function BasicLayout() {
   const [isMove] = useState(false);
   async function test() {
-    const res = await getApi();
+    console.log(obj);
   }
   return (
     <div>
@@ -21,7 +21,7 @@ function BasicLayout() {
           {`isMove =${isMove}`}
         </Header>
         <Layout>
-          <Sider className="basic-layout-sider">
+          <Sider className="basic-layout-sider" width={210}>
             <SiderMenu />
           </Sider>
           <Content className="basic-layout-content">

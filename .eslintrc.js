@@ -32,6 +32,7 @@ module.exports = {
         "prettier/prettier": "error",
         "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx", ".ts", ".tsx"] }],
         'import/extensions': 'off',
-        'import/no-unresolved': 'off'
+        'import/no-unresolved': 'off',
+        "no-plusplus": "off"
     }
 };
