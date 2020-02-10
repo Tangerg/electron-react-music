@@ -39,7 +39,7 @@ const menuList: IMenuList[] = [
     title: "视频"
   },
   {
-    path: "/video",
+    path: "/friends",
     icon: <SyncOutlined />,
     title: "朋友"
   }
@@ -60,10 +60,10 @@ function SiderMenu() {
       <div className="content">
         {menuGroupList.map(menuGroup => {
           return (
-            <ItemGroup title={menuGroup.title}>
+            <ItemGroup key={menuGroup.title} title={menuGroup.title}>
               {menuGroup.menuList.map(menu => {
                 return (
-                  <Item path={menu.path}>
+                  <Item key={menu.path} path={menu.path}>
                     {menu.icon}
                     {menu.title}
                   </Item>

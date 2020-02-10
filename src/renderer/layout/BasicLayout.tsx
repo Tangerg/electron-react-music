@@ -2,16 +2,17 @@ import React, { useState } from "react";
 import { Layout, Button } from "antd";
 
 import "./BasicLayout.less";
+import { getApi } from "api/test";
 import MusicHeader from "./components/Header";
 import RenderView from "./components/RenderView";
 import SiderMenu from "./components/SiderMenu";
-import obj from "../router";
 
 const { Header, Footer, Sider, Content } = Layout;
 function BasicLayout() {
   const [isMove] = useState(false);
   async function test() {
-    console.log(obj);
+    const abc = await getApi(123);
+    console.log(abc);
   }
   return (
     <div>

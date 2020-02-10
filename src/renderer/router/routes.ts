@@ -19,7 +19,7 @@ export interface IRoute {
 const routes: IRoute[] = [
   {
     path: "/",
-    components: lazy(() => import("../layout/BasicLayout")),
+    components: lazy(() => import("layout/BasicLayout")),
     meta: {
       title: "音乐"
     },
