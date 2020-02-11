@@ -1,7 +1,28 @@
-import React from "react";
+import React, { useState, memo } from "react";
 
-function SubMenu() {
-  return <div />;
+interface ISubMenuProps {
+  title: string;
+  children?: React.ReactNode;
+}
+function SubMenu(props: ISubMenuProps) {
+  const { title, children } = props;
+  const [collapse, setCollapse] = useState(false);
+  const showChildren = () => {
+    if (collapse) {
+      return <div>{children}</div>;
+    }
+    return null;
+  };
+  const clickSubMenu = () => {
+    setCollapse(!collapse);
+    console.log("asd");
+  };
+  return (
+    <div>
+      <div onClick={clickSubMenu}>{title}</div>
+      {showChildren()}
+    </div>
+  );
 }
 
-export default SubMenu;
+export default memo(SubMenu);

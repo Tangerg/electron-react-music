@@ -1,18 +1,17 @@
 import React, { PureComponent } from "react";
+
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import BasicLayout from "./layout/BasicLayout";
 import "./styles/index.less";
-import { BrowserRouter, Route } from "react-router-dom";
 
 class App extends PureComponent {
   render() {
     return (
-      <BrowserRouter basename="/">
-        <Route path="/">
-          <div className="App">
-            <BasicLayout />
-          </div>
-        </Route>
-      </BrowserRouter>
+      <Router>
+        <Switch>
+          <Route path="/" component={BasicLayout} />
+        </Switch>
+      </Router>
     );
   }
 }

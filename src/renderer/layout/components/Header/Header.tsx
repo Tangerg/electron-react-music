@@ -1,10 +1,10 @@
 import React from "react";
-import Logo from "./Logo";
-import History from "./History";
-import Search from "./Search";
-import User from "./User";
-import Theme from "./Theme";
-import Control from "./Control";
+import Logo from "./components/Logo";
+import History from "./components/History";
+import Search from "./components/Search";
+import User from "./components/User";
+import Theme from "./components/Theme";
+import Control from "./components/Control";
 import "./Header.less";
 
 function Header() {

@@ -1,77 +1,70 @@
 import React from "react";
-import "./SiderMenu.less";
-import {
-  HomeOutlined,
-  SettingFilled,
-  SmileOutlined,
-  SyncOutlined
-} from "@ant-design/icons/lib";
-import { Item, ItemGroup } from "../../../components/Menu";
 
-interface IMenuGroup {
-  title: string;
-  menuList: IMenuList[];
-}
-interface IMenuList {
-  path: string;
-  icon: any;
-  title: string;
-}
-const menuList: IMenuList[] = [
-  {
-    path: "/",
-    icon: <HomeOutlined />,
-    title: "根路径"
-  },
-  {
-    path: "/find",
-    icon: <HomeOutlined />,
-    title: "发现音乐"
-  },
-  {
-    path: "/fm",
-    icon: <SettingFilled spin />,
-    title: "私人fm"
-  },
-  {
-    path: "/video",
-    icon: <SmileOutlined rotate={180} />,
-    title: "视频"
-  },
-  {
-    path: "/friends",
-    icon: <SyncOutlined />,
-    title: "朋友"
+import { Item, ItemGroup, SubMenu } from "components/Menu";
+import {
+  SIDER_MENU_GROUP_ASYNC,
+  SIDER_MENU_GROUP_DEFAULT,
+  IMenuItem,
+  IMenuGroup
+} from "./sider";
+
+import "./SiderMenu.less";
+
+const renderMenuItem = (menulist: IMenuItem[]) => {
+  if (menulist && menulist.length) {
+    const result = [];
+    result.push(
+      menulist.map(menuItem => {
+        return (
+          <Item key={menuItem.path} path={menuItem.path}>
+            {menuItem.icon}
+            {menuItem.title}
+          </Item>
+        );
+      })
+    );
+    return result;
   }
-];
-const menuGroupList: IMenuGroup[] = [
-  {
-    title: "推荐",
-    menuList
-  },
-  {
-    title: "我的音乐",
-    menuList
+  return null;
+};
+const renderMenuGroup = (menuGroupList: IMenuGroup[]) => {
+  if (menuGroupList && menuGroupList.length) {
+    const result = [];
+    result.push(
+      menuGroupList.map(menuGroup => {
+        return (
+          <ItemGroup key={menuGroup.title} title={menuGroup.title}>
+            {renderMenuItem(menuGroup.menuList)}
+          </ItemGroup>
+        );
+      })
+    );
+    return result;
   }
-];
+  return null;
+};
+const renderMenuGroupAsync = (menuGroupList: IMenuGroup[]) => {
+  if (menuGroupList && menuGroupList.length) {
+    const result = [];
+    result.push(
+      menuGroupList.map(menuGroup => {
+        return (
+          <SubMenu key={menuGroup.title} title={menuGroup.title}>
+            {renderMenuItem(menuGroup.menuList)}
+          </SubMenu>
+        );
+      })
+    );
+    return result;
+  }
+  return null;
+};
 function SiderMenu() {
   return (
     <div>
       <div className="content">
-        {menuGroupList.map(menuGroup => {
-          return (
-            <ItemGroup key={menuGroup.title} title={menuGroup.title}>
-              {menuGroup.menuList.map(menu => {
-                return (
-                  <Item key={menu.path} path={menu.path}>
-                    {menu.icon}
-                    {menu.title}
-                  </Item>
-                );
-              })}
-            </ItemGroup>
-          );
-        })}
+        {renderMenuGroup(SIDER_MENU_GROUP_DEFAULT)}
+        {renderMenuGroupAsync(SIDER_MENU_GROUP_ASYNC)}
       </div>
     </div>
   );
