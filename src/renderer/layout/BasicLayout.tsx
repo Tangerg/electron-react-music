@@ -6,13 +6,14 @@ import { getApi } from "api/test";
 import MusicHeader from "./components/Header";
 import RenderView from "./components/RenderView";
 import SiderMenu from "./components/SiderMenu";
+import { render } from "../router";
 
 const { Header, Footer, Sider, Content } = Layout;
 function BasicLayout() {
   const [isMove] = useState(false);
   async function test() {
-    const abc = await getApi(123);
-    console.log(abc);
+    // s const abc = await getApi(123);
+    console.log(render);
   }
   return (
     <div>

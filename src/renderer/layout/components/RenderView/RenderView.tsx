@@ -1,10 +1,18 @@
 import React from "react";
 import "./RenderView.less";
+import { Switch, Route } from "react-router-dom";
+import Discover from "views/discover-music";
 
-function RenderView() {
+interface IRenderViewProps {
+  children?: any;
+}
+function RenderView(props: IRenderViewProps) {
+  const { children } = props;
   return (
     <div className="RenderView">
-      <div className="RenderView-cantainer">这是内容区域，测试滚动条</div>
+      <Switch>
+        <Route path="/discover" component={Discover} />
+      </Switch>
     </div>
   );
 }

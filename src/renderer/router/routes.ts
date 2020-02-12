@@ -1,31 +1,26 @@
 import { lazy } from "react";
+import BasicLayout from "layout/BasicLayout";
+import { IRoute } from "./index";
 import discoverRoutes from "./modules/discover";
 import privateRoutes from "./modules/private";
-
-export interface IRouteMeta {
-  title: string;
-  icon?: string;
-}
-export interface IRoute {
-  path: string;
-  components?: any;
-  redirect?: string;
-  meta: IRouteMeta;
-  children?: IRoute[];
-  sider?: boolean;
-  exact?: boolean;
-}
 
 const routes: IRoute[] = [
   {
     path: "/",
-    components: lazy(() => import("layout/BasicLayout")),
+    component: BasicLayout,
     meta: {
-      title: "音乐"
+      title: "蓝眼音乐"
     },
-    redirect: "/discover"
+    // redirect: "/discover"
   },
   ...discoverRoutes,
-  ...privateRoutes
+  ...privateRoutes,
+  {
+    path: "/404",
+    component: lazy(() => import("layout/BasicLayout")),
+    meta: {
+      title: "音乐"
+    }
+  }
 ];
 export default routes;

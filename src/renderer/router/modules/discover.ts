@@ -1,5 +1,5 @@
 import { lazy } from "react";
-import { IRoute } from "../routes";
+import { IRoute } from "../index";
 
 const discoverRoutes: IRoute[] = [
   {
@@ -10,13 +10,15 @@ const discoverRoutes: IRoute[] = [
     },
     sider: true,
     redirect: "/discover/recommend",
+    component: lazy(() => import("views/discover-music")),
     children: [
       {
         path: "/discover/recommend",
         meta: {
           title: "个性推荐"
         },
-        components: lazy(() => import("../../layout/BasicLayout"))
+        exact: true,
+        component: lazy(() => import("../../layout/BasicLayout"))
       },
       {
         path: "/discover/playlist",

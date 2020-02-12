@@ -1,5 +1,5 @@
 import { lazy } from "react";
-import { IRoute } from "../routes";
+import { IRoute } from "../index";
 
 const privateRoutes: IRoute[] = [
   {
@@ -17,7 +17,8 @@ const privateRoutes: IRoute[] = [
         meta: {
           title: "私人FM播放"
         },
-        components: lazy(() => import("../../layout/BasicLayout"))
+        exact: true,
+        component: lazy(() => import("../../layout/BasicLayout"))
       }
     ]
   }

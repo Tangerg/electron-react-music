@@ -1,7 +1,16 @@
 import React from "react";
 
-function DiscoverMusic() {
-  return <div>HELLO</div>;
+interface IDiscoverMusicProps {
+  children?: any;
+}
+function DiscoverMusic(props: IDiscoverMusicProps) {
+  const { children } = props;
+  return (
+    <div>
+      <div>HELLO</div>
+      {children}
+    </div>
+  );
 }
 
 export default DiscoverMusic;
