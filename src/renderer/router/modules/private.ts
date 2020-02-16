@@ -10,15 +10,16 @@ const privateRoutes: IRoute[] = [
     },
     sider: true,
     redirect: "/private/play",
+    component: lazy(() => import("views/private-fm")),
     children: [
       {
-        path: "/discover/recommend",
+        path: "/private/play",
         sider: true,
         meta: {
           title: "私人FM播放"
         },
         exact: true,
-        component: lazy(() => import("../../layout/BasicLayout"))
+        component: lazy(() => import("layout/BasicLayout"))
       }
     ]
   }

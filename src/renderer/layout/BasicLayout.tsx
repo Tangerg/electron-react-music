@@ -6,15 +6,19 @@ import { getApi } from "api/test";
 import MusicHeader from "./components/Header";
 import RenderView from "./components/RenderView";
 import SiderMenu from "./components/SiderMenu";
-import { render } from "../router";
+import { renderRoutes } from "../router";
 
+interface Interface {
+  routes: any[];
+}
 const { Header, Footer, Sider, Content } = Layout;
-function BasicLayout() {
+function BasicLayout(props: Interface) {
   const [isMove] = useState(false);
   async function test() {
     // s const abc = await getApi(123);
-    console.log(render);
   }
+  const { routes } = props;
+  console.log(routes);
   return (
     <div>
       <Layout className="basic-layout">
@@ -27,7 +31,7 @@ function BasicLayout() {
             <SiderMenu />
           </Sider>
           <Content className="basic-layout-content">
-            <RenderView />
+            <RenderView routes={routes} />
           </Content>
         </Layout>
         <Footer className="basic-layout-footer">

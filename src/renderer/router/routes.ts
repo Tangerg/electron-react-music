@@ -11,10 +11,9 @@ const routes: IRoute[] = [
     meta: {
       title: "蓝眼音乐"
     },
-    // redirect: "/discover"
+    // redirect: "/discover",
+    children: [...discoverRoutes, ...privateRoutes]
   },
-  ...discoverRoutes,
-  ...privateRoutes,
   {
     path: "/404",
     component: lazy(() => import("layout/BasicLayout")),

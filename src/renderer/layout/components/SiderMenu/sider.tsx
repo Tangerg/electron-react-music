@@ -21,7 +21,7 @@ const RECOMEND_MENULIST: IMenuItem[] = [
     title: "发现音乐"
   },
   {
-    path: "/FM",
+    path: "/private",
     icon: <HomeOutlined />,
     title: "私人FM"
   },

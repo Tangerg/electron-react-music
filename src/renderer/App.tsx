@@ -1,16 +1,17 @@
-import React, { PureComponent } from "react";
+import React, { PureComponent, Suspense } from "react";
 
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import BasicLayout from "./layout/BasicLayout";
+import { BrowserRouter as Router } from "react-router-dom";
+import { renderRoutes } from "myRouter/index";
+import routes from "myRouter/routes";
+
 import "./styles/index.less";
-import { render } from "./router";
 
 class App extends PureComponent {
   render() {
     return (
-      <Router>
-        <Switch>{render}</Switch>
-      </Router>
+      <Suspense fallback={<div className="layout__loading">loading</div>}>
+        <Router>{renderRoutes(routes)}</Router>
+      </Suspense>
     );
   }
 }

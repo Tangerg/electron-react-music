@@ -13,18 +13,30 @@ const discoverRoutes: IRoute[] = [
     component: lazy(() => import("views/discover-music")),
     children: [
       {
+        path: "/discover",
+        redirect: "/discover/recommend",
+        component: lazy(() =>
+          import("views/discover-music/components/recommend")
+        )
+      },
+      {
         path: "/discover/recommend",
         meta: {
           title: "个性推荐"
         },
         exact: true,
-        component: lazy(() => import("../../layout/BasicLayout"))
+        component: lazy(() =>
+          import("views/discover-music/components/recommend")
+        )
       },
       {
         path: "/discover/playlist",
         meta: {
           title: "歌单"
-        }
+        },
+        component: lazy(() =>
+          import("views/discover-music/components/playlist")
+        )
       },
       {
         path: "/discover/dj",
@@ -36,7 +48,8 @@ const discoverRoutes: IRoute[] = [
         path: "/discover/rank",
         meta: {
           title: "排行榜"
-        }
+        },
+        component: lazy(() => import("views/discover-music/components/rank"))
       },
       {
         path: "/discover/artist",

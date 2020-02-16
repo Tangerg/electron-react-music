@@ -3,6 +3,7 @@
     "baseUrl": "./",
     "paths": {
       "api/*": ["src/renderer/api/*"],
+      "myRouter/*": ["src/renderer/router/*"],
       "layout/*": ["src/renderer/layout/*"],
       "config/*": ["src/renderer/config/*"],
       "components/*": ["src/renderer/components/*"],

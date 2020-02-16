@@ -1,44 +1,50 @@
 import React from "react";
-import { Route, Redirect } from "react-router-dom";
+import { Route, Redirect, Switch } from "react-router-dom";
 import { IRoute } from "./index";
 
-export default function renderRouteConfig(routes: IRoute[]): any {
-  const result = [];
-  if (!routes || !routes.length) {
-    return null;
-  }
-  for (let i = 0; i < routes.length; i++) {
-    const route = routes[i];
-    if (route.redirect) {
-      result.push(
-        <Redirect
-          key={route.path}
-          to={route.redirect ? route.redirect : "/404"}
-          from={route.path}
-        />
-      );
-    }
-    if (route.children) {
-      result.push(
-        <Route
-          key={route.path}
-          path={route.path}
-          component={route.component}
-          exact={route.exact}
-        >
-          {renderRouteConfig(route.children as IRoute[])}
-        </Route>
-      );
-    } else {
-      result.push(
-        <Route
-          key={route.path}
-          path={route.path}
-          component={route.component}
-          exact={route.exact}
-        />
-      );
-    }
-  }
-  return result;
+function renderRoute(route: IRoute) {
+  const { component: Component } = route;
+  return (
+    <Route
+      key={route.path}
+      path={route.path}
+      exact={route.exact}
+      render={props => (
+        <Component {...props} routes={route.children ? route.children : null} />
+      )}
+    />
+  );
 }
+
+function renderRedirect(route: IRoute) {
+  return (
+    <Redirect
+      key={route.path}
+      path={route.path}
+      to={route.redirect ? route.redirect : "/404"}
+      push
+    />
+  );
+}
+
+function renderRouteMap(routes: IRoute[]): Object {
+  const result: React.ReactNode[] = [];
+  const redirect: React.ReactNode[] = [];
+  routes.forEach(route => {
+    if (route.redirect) {
+      redirect.push(renderRedirect(route));
+    } else {
+      result.push(renderRoute(route));
+    }
+  });
+
+  return [...result, ...redirect];
+}
+function renderRoutes(routes: IRoute[]) {
+  return (
+    <div>
+      <Switch>{renderRouteMap(routes)}</Switch>
+    </div>
+  );
+}
+export default renderRoutes;

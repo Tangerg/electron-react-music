@@ -18,6 +18,7 @@ module.exports = override(
   }),
   addWebpackAlias({
     api: path.resolve(__dirname, "./src/renderer/api"),
+    myRouter: path.resolve(__dirname, "./src/renderer/router"),
     layout: path.resolve(__dirname, "./src/renderer/layout"),
     config: path.resolve(__dirname, "./src/renderer/config"),
     components: path.resolve(__dirname, "./src/renderer/components"),
